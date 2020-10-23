@@ -17,11 +17,11 @@
   },
   "homepage": "https://github.com/HelenZhangLP/adaptive-rem#readme",
   "dependencies": {
-    "css-loader": "^5.0.0",
+    "css-loader": "^0.25.0",
     "node-sass": "^4.14.1",
     "sass-loader": "^10.0.4",
     "style-loader": "^2.0.0",
     "url-loader": "^4.1.1",
-    "webpack": "^5.2.0"
+    "webpack": "^1.13.2"
   }
 }
