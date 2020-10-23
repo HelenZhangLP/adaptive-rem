@@ -71,4 +71,17 @@
 
   /***/ }),
   ```
-  3. require('style-loader!css-loader!./reset.css'); 加入 style-loader 使 css 样式生效
+  3. require('style-loader!css-loader!./reset.css'); 加入 style-loader 使 css 样式生效。**`注意：style-loader 写在 css loader 之前，顺序不能错`**
+
+#### 命令行加入 loader,简化代码写法。
+> webpack app.js app.bundle.js --module-bind 'css=style-loader!css-l
+oader' 命令指定 loader。**`注意：style-loader 写在 css loader 之前，顺序不能错`**
+
+#### 命令行几个参数介绍
+1.  --module-bind 需要绑定的加载器（目前这个定义比较片面，理解深入再修改）
+2.  --progress 查看打包的进程
+3.  --display-module 显示打包的模块
+4.  --watch 热更新
+5.  --display-reasons 显示打包的原因
+
+> webpack app.js app.bunder.js --module-bind 'css=style-loader!css-loader' --watch --progress --display-module --display-reasons

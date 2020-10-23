@@ -1,5 +1,5 @@
 
-require('style-loader!css-loader!./reset.css');
+require('./reset.css');
 require('./pages/index.js');
 
 
