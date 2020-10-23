@@ -1,0 +1,27 @@
+{
+  "name": "adaptive-rem",
+  "version": "1.0.0",
+  "description": "adaptive",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HelenZhangLP/adaptive-rem.git"
+  },
+  "author": "HelenZhangLP",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HelenZhangLP/adaptive-rem/issues"
+  },
+  "homepage": "https://github.com/HelenZhangLP/adaptive-rem#readme",
+  "dependencies": {
+    "css-loader": "^5.0.0",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^10.0.4",
+    "style-loader": "^2.0.0",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.2.0"
+  }
+}
