@@ -1,8 +1,8 @@
 
-<center>webpack 基本配置 —— html-webpack-plugin 使用</center>
+##webpack 基本配置 —— html-webpack-plugin 使用
 
-branch draft-webpack-v0.1 —— webpack 的基础
-branch draft-webpack-v0.2 —— webpack.config.js 的基本配置
+* branch draft-webpack-v0.1 —— webpack 的基础
+* branch draft-webpack-v0.2 —— webpack.config.js 的基本配置
 
 ### html-webpack-plugin 自动生成 html 模板，解决因每次编译生成不同的哈希文件的引用
 
