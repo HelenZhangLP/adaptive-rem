@@ -12,6 +12,11 @@ module.exports = {
     filename: 'js/[name]-[chunkhash].js',
     publicPath: 'http://gulu.top/' // 上线前配置
   },
+  // 置于 development 和 production 模式下时，自动添加适合于当前模式的配置
+  mode: 'development', // 打包模式， 三种 development, production, none
+  devServer: {  // dev 环境的配置，是 webpack-dev-server 的相关配置
+    publicPath: './dist'
+  },
   plugins: [new htmlWebpackPlugin({
     template: 'index.html',
 //    filename: 'inex-[hash].html', //修改生成的模板名称
