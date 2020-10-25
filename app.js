@@ -1,6 +1,6 @@
 
-require('./reset.css');
-require('./pages/index.js');
+// require('./reset.css');
+require('./src/script/index.js');
 
 
 function test(str) {
