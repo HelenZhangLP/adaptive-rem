@@ -1,5 +1,6 @@
 
 ### webpack 打包的基础
+以下案例基于 webpack 3.10.0，在 webpack 5.2.0 就不适用了 
 
   1.  打包命令 webpack app.js app.bunder.js
   ```
