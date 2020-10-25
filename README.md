@@ -1,5 +1,5 @@
 
-##webpack 基本配置 —— html-webpack-plugin 使用
+## webpack 基本配置 —— html-webpack-plugin 使用
 
 * branch draft-webpack-v0.1 —— webpack 的基础
 * branch draft-webpack-v0.2 —— webpack.config.js 的基本配置
