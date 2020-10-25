@@ -140,3 +140,25 @@ main-d064c9722bcc8814c017bundle.js  2.52 kB       1  [emitted]  main
 ```
 2. 运行脚本
 `npm run webpack-dev`
+
+### webpack plugins
+1.  html-webpack-plugin 自动生成 html 模板，解决因每次编译生成不同的哈希文件名
+2.  使用如下：
+```javascript
+const path = require('path');
+var htmlWebpackPlugin = require('html-webpack-plugin')
+module.exports = {
+  entry: {
+    app: './app.js',
+    main: './main.js'
+  }, // 入口文件
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'js/[name]-[chunkhash].js'
+  },
+  plugins: [new htmlWebpackPlugin({
+    template: 'index.html'
+  })]
+}
+```
+>`注意：` 使用 `html-webpack-plugin` webpack 版本需要在 ‘webpack@^4.0.0 || ^5.0.0’ 否则报错 ’Error: Cannot find module 'webpack/lib/node/NodeTemplatePlugin'
