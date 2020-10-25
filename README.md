@@ -83,5 +83,6 @@ oader' 命令指定 loader。**`注意：style-loader 写在 css loader 之前�
 3.  --display-module 显示打包的模块
 4.  --watch 热更新
 5.  --display-reasons 显示打包的原因
+6.  --color 打包内容的字体是彩色的
 
-> webpack app.js app.bunder.js --module-bind 'css=style-loader!css-loader' --watch --progress --display-module --display-reasons
+> webpack app.js app.bunder.js --module-bind 'css=style-loader!css-loader' --watch --progress --display-module --display-reasons --color
