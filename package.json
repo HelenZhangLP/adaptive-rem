@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack-dev": "webpack --config webpack.dev.config.js --color --display-reasons --display-modules --watch --progress"
+    "buk": "webpack --config webpack.dev.config.js --color --display-reasons --display-modules --watch --progress"
   },
   "repository": {
     "type": "git",
