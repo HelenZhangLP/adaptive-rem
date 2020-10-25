@@ -72,11 +72,9 @@
 __webpack_require__(1);
 
 
-function test(str) {
-  alert(str)
+function main0(str) {
+  alert('this is entry 1')
 }
-
-test('webpack 3.10.0 test')
 
 
 /***/ }),
