@@ -25,6 +25,8 @@ module.exports = {
   }
 }
 ```
+> entry: './app.js' 是 entry: {app: './app.js'} 的简写
+
 ### 多入口打包配置
 
 ```
@@ -79,6 +81,51 @@ module.exports = __webpack_require__(3);
 /***/ }),
 ```
 > 多入口是将两个入口模块打包到 module 0 中
+
+### 多入口对象语法
+```javascript
+const path = require('path');
+module.exports = {
+  entry: {
+    app: './app.js',
+    main: './main.js'
+  }, // 入口文件
+  output: {
+    path: path.resolve(__dirname, 'dist/js'),
+    filename: 'bundle.js'
+  }
+}
+```
+> ERROR in chunk main [entry]
+bundle.js
+Conflict: Multiple assets emit to the same filename bundle.js
+
+```javascript
+const path = require('path');
+module.exports = {
+  entry: {
+    app: './app.js',
+    main: './main.js'
+  }, // 入口文件
+  output: {
+    path: path.resolve(__dirname, 'dist/js'),
+    filename: '[name]-[chunkhash].js'
+  }
+}
+```
+生成两个由文件名由入口文件名和chunkhash组成的打包文件 `app-06b815f8b62a03208bb2bundle.js` 和 `main-d064c9722bcc8814c017bundle.js `
+```
+Hash: f0d0efc49e31691d5391
+Version: webpack 3.10.0
+Time: 64ms
+                             Asset     Size  Chunks             Chunk Names
+
+ app-06b815f8b62a03208bb2bundle.js  2.91 kB       0  [emitted]  app
+main-d064c9722bcc8814c017bundle.js  2.52 kB       1  [emitted]  main
+   [0] ./app.js 115 bytes {0} [built]
+   [1] ./src/script/index.js 34 bytes {0} [built]
+   [2] ./main.js 49 bytes {1} [built]
+```
 
 ### webpack 运行自命名的 webpack 配置文件，如 webpack.dev.config.js
 >  webpack --config webpack.dev.config.js
