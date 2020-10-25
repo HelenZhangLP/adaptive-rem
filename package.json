@@ -19,7 +19,6 @@
   "homepage": "https://github.com/HelenZhangLP/adaptive-rem#readme",
   "dependencies": {
     "css-loader": "^0.25.0",
-    "html-webpack-plugin": "^4.5.0",
     "node-sass": "^4.14.1",
     "sass-loader": "^10.0.4",
     "style-loader": "^2.0.0",
