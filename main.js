@@ -1,4 +1,6 @@
 
-function main1() {
-  alert('this is entry 2')
+
+function main() {
+  alert('this is entry-1')
 }
+main();

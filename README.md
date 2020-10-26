@@ -1,46 +1,74 @@
 
-## webpack 基本配置 —— html-webpack-plugin 使用
+## webpack 基本配置 —— html-webpack-plugin 多入口文件的使用
 
 * branch draft-webpack-v0.1 —— webpack 的基础
 * branch draft-webpack-v0.2 —— webpack.config.js 的基本配置
+* branch draft-webpack-v0.3 —— html-webpack-plugin 的基本使用
 
-### html-webpack-plugin 自动生成 html 模板，解决因每次编译生成不同的哈希文件的引用
+
+### html-webpack-plugin 支持多页面应用，生成多个 html 入口文件
 
 ```javascript
 const path = require('path');
-var htmlWebpackPlugin = require('html-webpack-plugin')
+const htmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
   entry: {
-    app: './app.js',
-    main: './main.js'
+    main: './main.js',
+    a: './src/script/a.js',
+    b: './src/script/b.js',
+    c: './src/script/c.js'
   }, // 入口文件
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'js/[name]-[chunkhash].js'
+    filename: 'js/[name]-[chunkhash].js',
+    publicPath: 'http://gulu.top/' // 上线前配置
   },
-  plugins: [new htmlWebpackPlugin({
-    template: 'index.html'
-  })]
+  plugins: [
+    new htmlWebpackPlugin({
+      template: 'index.html',
+      filename: 'index.html',
+      title: '入口 index',
+    }),
+    new htmlWebpackPlugin({
+      template: 'index.html',
+      title: '入口 a',
+      filename: 'a.html',
+    })
+  ]
 }
 ```
->`注意：` 使用 `html-webpack-plugin` webpack 版本需要在 ‘webpack@^4.0.0 || ^5.0.0’ 否则报错 ’Error: Cannot find module 'webpack/lib/node/NodeTemplatePlugin'
+> 以上 webpack.config.js 配置可生成 a.html/index.html 两个 html 文件 title 不同
 
-### html-webpack-plugin 参数
+### html-webpack-plugin 参数 chunks|excludeChunks 设置模块引用
 ```javascript
 var htmlWebpackPlugin = require('html-webpack-plugin')
 {
   ...
-  plugins: [new htmlWebpackPlugin({
-    template: 'index.html',
-  //    filename: 'inex-[hash].html', //修改生成的模板名称
-    inject: 'head', // 修改生成的 js 文件插入的位置
-    title: 'webpack.config.js 添加参数，通过 ejs 模板在 index.html 中引用', // 这里的参数要在 html 模板中引用
-    date: new Date()
-  })]
+  plugins: [
+    new htmlWebpackPlugin({
+      template: 'index.html',
+      filename: 'index.html',
+      title: '入口 index',
+      excludeChunks: ['a','c'],
+      minify: {
+        whitespace: false
+      }
+    }),
+    new htmlWebpackPlugin({
+      template: 'index.html',
+      title: '入口 a',
+      filename: 'a.html',
+      chunks: ['main','c'],
+      minify: {
+        whitespace: false
+      }
+    })
+  ]
 }
 ```
 
-### 运用 ejs 模板语法，了解 `html-webpack-plugin`
+### htmlWebpackPlugin.files 动态加载 js，减少链接请求数
 ```
 <% for(var key in htmlWebpackPlugin){ %>
   <%= key%>
@@ -55,16 +83,20 @@ var htmlWebpackPlugin = require('html-webpack-plugin')
 ```
 > publicPath js css manifest favicon
 ---
+1.  head 加载所有模板都要使用的 js 脚本，减少链接请请求数
+```html
+<head>
+  <script type="text/javascript">
+    <%= compilation.assets[htmlWebpackPlugin.files.js.filter(item => item.indexOf('js/main-') !== -1)[0].substr(htmlWebpackPlugin.files.publicPath.length)].source() %>
+  </script>
+</head>
 ```
-<% for(var key in htmlWebpackPlugin.tags){ %>
-  <%= key%>
-<% } %>
+2.  body 动态加载其余需要加载的 js 脚本
+```html
+<% for (var i=0; i<htmlWebpackPlugin.files.js.length; i++){%>
+  <% if(htmlWebpackPlugin.files.js[i].indexOf('js/main-') === -1) {%>
+    <script src="<%= htmlWebpackPlugin.files.js[i] %>"></script>
+  <%} %>
+<%}%>
 ```
-> headTags bodyTags
----
-```
-<% for(var key in htmlWebpackPlugin.options){ %>
-  <%= key%>
-<% } %>
-```
-> template templateContent templateParameters filename publicPath hash inject scriptLoading compile favicon minify cache showErrors chunks excludeChunks chunksSortMode meta base title xhtml date
+> `注意：`如果 `main.js` 为多数或所有模板头部静态引用的脚本，`webpack.config.js` 中实例 `html-webpack-plugin` 时 参数 chunks 中必须包含 `main`，否则 html 模板中使用 htmlWebpackPlugin.files.js 中取不到 main.js 的压缩文件 

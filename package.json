@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack --config webpack.dev.config.js --color --display-reasons --display-modules --watch --progress",
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server",
+    "build": "webpack --mode=development"
   },
   "repository": {
     "type": "git",
@@ -19,13 +20,14 @@
   },
   "homepage": "https://github.com/HelenZhangLP/adaptive-rem#readme",
   "dependencies": {
+    "4": "0.0.0",
     "css-loader": "^0.25.0",
     "html-webpack-plugin": "^4.5.0",
     "node-sass": "^4.14.1",
     "sass-loader": "^10.0.4",
     "style-loader": "^2.0.0",
     "url-loader": "^4.1.1",
-    "webpack": "^5.2.0"
+    "webpack": "^4.12.0"
   },
   "devDependencies": {
     "webpack-cli": "^4.1.0",

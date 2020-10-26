@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>入口 index</title>
-  <script type="text/javascript">
-    /******/ (function(modules) { // webpackBootstrap
+/******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -106,24 +98,3 @@ eval("\n\nfunction main() {\n  alert('this is entry-1')\n}\nmain();\n\n\n//# sou
 /***/ })
 
 /******/ });
-  </script>
-</head>
-<body>
-
-  
-    
-  
-    
-      <script src="http://gulu.top/js/a-7f2a84663a2ef3c48f82.js"></script>
-    
-  
-    
-      <script src="http://gulu.top/js/b-7f2a84663a2ef3c48f82.js"></script>
-    
-  
-    
-      <script src="http://gulu.top/js/c-7f2a84663a2ef3c48f82.js"></script>
-    
-  
-</body>
-</html>
