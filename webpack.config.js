@@ -29,7 +29,7 @@ module.exports = {
       title: '入口 a',
       filename: 'a.html',
       inject: false,
-      chunks: ['main','a','c']
+      excludeChunks: ['b']
     })
   ]
 }

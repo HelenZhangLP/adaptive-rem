@@ -99,4 +99,25 @@ var htmlWebpackPlugin = require('html-webpack-plugin')
   <%} %>
 <%}%>
 ```
-> `注意：`如果 `main.js` 为多数或所有模板头部静态引用的脚本，`webpack.config.js` 中实例 `html-webpack-plugin` 时 参数 chunks 中必须包含 `main`，否则 html 模板中使用 htmlWebpackPlugin.files.js 中取不到 main.js 的压缩文件 
+> `注意：`如果 `main.js` 为多数或所有模板头部静态引用的脚本，`webpack.config.js` 中实例 `html-webpack-plugin` 时 参数 chunks 中必须包含 `main`，否则 html 模板中使用 htmlWebpackPlugin.files.js 中取不到 main.js 的压缩文件，如下配置
+```javascript
+{
+  ...
+  plugins: [
+    new htmlWebpackPlugin({
+      template: 'index.html',
+      filename: 'index.html',
+      title: '入口 index',
+      inject: false,
+      chunks: ['main','a','b','c']
+    }),
+    new htmlWebpackPlugin({
+      template: 'index.html',
+      title: '入口 a',
+      filename: 'a.html',
+      inject: false,
+      excludeChunks: ['b']
+    })
+  ]
+}
+```
