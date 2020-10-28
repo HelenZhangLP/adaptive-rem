@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>入口 a</title>
-  <script type="text/javascript">
-    /******/ (function(modules) { // webpackBootstrap
+/******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -85,41 +77,37 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "http://gulu.top/";
+/******/ 	__webpack_require__.p = "";
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./main.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/app.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./main.js":
-/*!*****************!*\
-  !*** ./main.js ***!
-  \*****************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/***/ "./src/app.js":
+/*!********************!*\
+  !*** ./src/app.js ***!
+  \********************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("\n\nfunction main() {\n  alert('this is entry-1')\n}\nmain();\n\n\n//# sourceURL=webpack:///./main.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_layer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/layer.js */ \"./src/components/layer.js\");\n\n\nconst App = function () {\n  console.log(_components_layer_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]);\n};\n\nnew App();\n\n//# sourceURL=webpack:///./src/app.js?");
+
+/***/ }),
+
+/***/ "./src/components/layer.js":
+/*!*********************************!*\
+  !*** ./src/components/layer.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n// import tlp from './layer.html';\nconst layer = () => {\n  return {\n    tlp: tlp\n  };\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (layer);\n\n//# sourceURL=webpack:///./src/components/layer.js?");
 
 /***/ })
 
 /******/ });
-  </script>
-</head>
-<body>
-
-  
-    
-  
-    
-      <script src="http://gulu.top/js/a-7f2a84663a2ef3c48f82.js"></script>
-    
-  
-    
-      <script src="http://gulu.top/js/c-7f2a84663a2ef3c48f82.js"></script>
-    
-  
-</body>
-</html>

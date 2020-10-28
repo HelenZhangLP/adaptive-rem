@@ -5,16 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title><%= htmlWebpackPlugin.options.title%></title>
-  <script type="text/javascript">
-    <%= compilation.assets[htmlWebpackPlugin.files.js.filter(item => item.indexOf('js/main-') !== -1)[0].substr(htmlWebpackPlugin.files.publicPath.length)].source() %>
-  </script>
 </head>
 <body>
-
-  <% for (var i=0; i<htmlWebpackPlugin.files.js.length; i++){%>
-    <% if(htmlWebpackPlugin.files.js[i].indexOf('js/main-') === -1) {%>
-      <script src="<%= htmlWebpackPlugin.files.js[i] %>"></script>
-    <%} %>
-  <%}%>
 </body>
 </html>
